@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VideoAsk Embed with Logging</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Load VideoAsk embed script -->
+  <script src="https://www.videoask.com/embed/embed.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .videoask-embed {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VideoAsk Embed -->
+  <div class="videoask-embed"
+       data-videoask-url="https://www.videoask.com/fzquvy0e4"
+       data-autoplay="1">
+  </div>
+
+  <!-- JS to listen for form submission -->
+  <script>
+    console.log("🚀 Page loaded — waiting for VideoAsk events...");
+
+    window.addEventListener("message", function(event) {
+      if (event?.data?.event === "response-completed") {
+        console.log("✅ VideoAsk response completed:", event.data);
+        console.log("🆔 Response ID:", event.data.responseId);
+      }
+    });
+  </script>
+
+</body>
+</html>
